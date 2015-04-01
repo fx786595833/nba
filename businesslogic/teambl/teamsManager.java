@@ -26,7 +26,7 @@ public class teamsManager {
 		return list;
 	}*/
 	
-	public ArrayList<teamVO> getSingleTeamData(String team) throws IOException{
+	public Object[][] getSingleTeamData(String team) throws IOException{
 		teamsManager t = new teamsManager();
 		list.clear();
 		
@@ -41,9 +41,42 @@ public class teamsManager {
 		t.gainP();
 		t.gainWinP(f,team);
 		t.gainAttackRound(f,team);
-	//	t.sort(list,5,0);
 		
-		return list;
+		Object[][] result = new Object[list.size()][28];
+		
+		for(int i=0;i<82;i++){
+			teamVO temp = list.get(i);
+			result[i][0] = temp.getName();
+			result[i][1] = temp.getGames();
+			result[i][2] = new Integer(temp.getfreeGoalMade());
+			result[i][3] = new Integer(temp.getfieldGoalAttempt());
+			result[i][4] = new Integer(temp.getNumberOfThreeGoalMade());
+			result[i][5] = new Integer(temp.getNumberOfThreeGoalAttempt());
+			result[i][6] = new Integer(temp.getFreeThrowMade());
+			result[i][7] = new Integer(temp.getFreeThrowAttempt());
+			result[i][8] = new Integer(temp.getOffenseRebound());
+			result[i][9] = new Integer(temp.getDefenseRebound());
+			result[i][10] = new Integer(temp.getRebound());
+			result[i][11] = new Integer(temp.getAssist());
+			result[i][12] = new Integer(temp.getSteal());
+			result[i][13] = new Integer(temp.getBlockShot());
+			result[i][14] = new Integer(temp.getError());
+			result[i][15] = new Integer(temp.getFoul());
+			result[i][16] = new Integer(temp.getScore());
+			result[i][17] = new Double(temp.getFGP());
+			result[i][18] = new Double(temp.getTGP());
+			result[i][19] = new Double(temp.getFTP());
+			result[i][20] = new Double(temp.getWinP());
+			result[i][21] = new Integer(temp.getAttackRound());
+			result[i][22] = new Double(temp.getOE());
+			result[i][23] = new Double(temp.getDE());
+			result[i][24] = new Double(temp.getORE());
+			result[i][25] = new Double(temp.getDRE());
+			result[i][26] = new Double(temp.getSE());
+			result[i][27] = new Double(temp.getAE());
+		}
+		
+		return result;
 	}
 
 	/*public void sort(ArrayList<teamVO> l, int position, int i) {
